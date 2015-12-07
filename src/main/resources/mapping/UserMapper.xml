@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sxq.demo.mapper.UserMapper" >
+	<resultMap id="UserMap" type="sxq.demo.model.User" autoMapping="true" >
+	</resultMap>
+	
+	
+	<insert id="save" parameterType="sxq.demo.model.User" useGeneratedKeys="true"
+		keyColumn="id" keyProperty="id">
+		insert t_user (id ,name ) values (#{id} ,#{name } ) 
+	</insert>
+	
+	<select id="queryByParams" resultMap="UserMap" parameterType="java.util.Map">
+		select * from t_user
+	</select>
+</mapper>
