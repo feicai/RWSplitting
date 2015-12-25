@@ -9,7 +9,7 @@
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 			
-	<context:component-scan base-package="sxq.demo.manager" />
+	<context:component-scan base-package="sxq.demo.manager,sxq.demo.dao" />
 	<!--  -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<bean name="writeDataSource" class="com.alibaba.druid.pool.DruidDataSource"
@@ -47,7 +47,7 @@
         </property>  
         <property name="defaultTargetDataSource" ref="readDataSource"/>  
     </bean>
-	
+	<!-- 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath:mapping/*.xml" />
@@ -62,7 +62,7 @@
 	<bean id="transactionManager" class="sxq.demo.db.RoutingDataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-<!-- 
+
 	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="insert*" propagation="REQUIRED" />
