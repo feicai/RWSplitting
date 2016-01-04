@@ -47,6 +47,11 @@
         </property>  
         <property name="defaultTargetDataSource" ref="readDataSource"/>  
     </bean>
+
+	<bean id="transactionManager" class="sxq.demo.db.RoutingDataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
 	<!-- 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -57,10 +62,6 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="sxq.demo.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-	</bean>
-	
-	<bean id="transactionManager" class="sxq.demo.db.RoutingDataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
